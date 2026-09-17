@@ -1,7 +1,96 @@
-# RunMapper
+# Run Mapper
 
-This is an app that tracks your movements during a run/walk. The app has 2 screens. The first screen is the Welcome screen. Here you will view the title of the app and logo, and the "Start Run!" button at the bottom. When the user clicks this button, the screen will switch to the next one. This second screen is the "Run" screen. Here, the user will see a map with a blue dot representing their current location. Under the map are two buttons: "Start" and "Stop". When the user would like the app to start tracking their route, the "Start" button can be clicked. Once clicked, the map will zoom further in to the user's loction or the blue dot so they can view their route clearly. A green marker will also appear at the user's location when start is clicked, a marker for their starting location. The user can reveal the label for the green marker as "Start" by clicking on the green marker. Once start is clicked, a blue line will also populate. The app tracks the user's movements continuously after clicking start, meaning the blue line indicating the user's path will follow the user's movements constantly (until the stop button is clicked). However, it is important to note that there is drift, meaning that the blue line will move a moderate amount even if the user is physically still (this especially tends to happen right when start is clicked). Lastly, when the start button is clicked the stopwatch starts. The stopwatch is direcly below the start and stop buttons.
+Run Mapper is a mobile application that tracks and visualizes a user’s movement during a run or walk. The application uses location services to display the user’s route, track elapsed time, calculate distance traveled, and determine average speed.
 
-When the user would like the app to stop tracking their movements and thus the route to "end", they can click the "Stop" button. Once this button is clicked, a red marker will appear, indicating the end of the user's route and promptly afterward a "Run Summary" (modal pop up) will populate. Under the Run Summary, is the user's total time for the route tracked by the stopwatch, the distance the user traveled, and the average speed for the route will appear. It is important to note that when calculating distance, movements less than 5 meters are not counted to account for the excess of the drift and to maintain accuracy when calculating average speed. To exit the Run Summary, the user can click the blue "Done" button below the recorded time in the pop up. Once this is clicked, the app remains on the "Run" screen but clears the map of the blue line and markers as well as resetting the stopwatch. Now the user is set up to start a new route by clicking "Start" again. The map remains zoomed in to the same level but a new green marker for the start will populate, a new blue line will appear (and move with drift even if the user is still), and the stopwatch will start timing. The user can click "Stop" to stop the route similarly, the ending red marker will appear, quickly after the Run Summary will appear, the user can close out, and similarly continue to repeat recording routes. While in the "Run" screen the user can exit at any time by clicking the "< Welcome" tab at the top left of the Run screen, going back to the Welcome screen where they can start a run again if they would like.
+## Features
 
-To summarize, the extra behaviors included are having the app continuously track the user and incorporating a timer and displaying the average speed at the end of the route. The main limitation of the app is the drift that tracks movement when a user is still.
+- Real-time GPS route tracking
+- Interactive map displaying the user’s current location
+- Start and end markers for each route
+- Continuously updated route visualization
+- Built-in stopwatch
+- Distance calculation with GPS noise filtering
+- Average-speed calculation
+- Run summary displaying time, distance, and speed
+- Ability to reset and record multiple routes
+
+## How It Works
+
+### Welcome Screen
+
+The Welcome screen displays the Run Mapper title, logo, and a **Start Run!** button. Selecting this button takes the user to the Run screen.
+
+### Run Screen
+
+The Run screen displays an interactive map with a blue dot representing the user’s current location. Beneath the map are **Start** and **Stop** buttons and a stopwatch.
+
+When the user selects **Start**:
+
+- The stopwatch begins.
+- The map focuses on the user’s route.
+- A green marker identifies the starting location.
+- A blue line begins tracing the user’s movement.
+- The application continuously records new location coordinates.
+
+Selecting the green marker displays its **Start** label.
+
+When the user selects **Stop**:
+
+- Location tracking and the stopwatch stop.
+- A red marker identifies the ending location.
+- A Run Summary appears.
+
+## Run Summary
+
+The Run Summary displays:
+
+- Total elapsed time
+- Distance traveled in kilometers
+- Average speed in kilometers per hour
+
+To reduce the effect of minor GPS fluctuations, movements of five meters or less between recorded coordinates are excluded from the distance calculation.
+
+Selecting **Done** closes the summary, clears the recorded route and markers, and resets the stopwatch so the user can begin another run.
+
+Users can return to the Welcome screen at any time by selecting **< Welcome** in the navigation bar.
+
+## Technologies
+
+- TypeScript
+- React Native
+- Expo
+- Expo Location
+- React Native Maps
+- React Navigation
+- Geolib
+
+## Running the Project
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/tanishka-10/run-mapper.git
+```
+
+2. Enter the project directory:
+
+```bash
+cd run-mapper
+```
+
+3. Install the dependencies:
+
+```bash
+npm install
+```
+
+4. Start the Expo development server:
+
+```bash
+npx expo start
+```
+
+5. Open the application using Expo Go or a compatible simulator.
+
+Location permissions must be enabled for route tracking to work.
+
